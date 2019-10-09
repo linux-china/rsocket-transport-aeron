@@ -47,6 +47,6 @@ public class AeronUriHandler implements UriHandler {
             aeronResources.dispose();
             aeronResources.onDispose().block();
         }));
-        return Optional.of(new AeronServerTransport(AeronServer.create(aeronResources).options(uri.getHost(), uri.getPort(), uri.getPort() + 2)));
+        return Optional.of(new AeronServerTransport(AeronServer.create(aeronResources).options(uri.getHost(), uri.getPort(), uri.getPort() + 1)));
     }
 }
