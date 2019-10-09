@@ -14,7 +14,7 @@ public class AeronClientTransport implements ClientTransport {
   }
 
   @Override
-  public Mono<DuplexConnection> connect() {
+  public Mono<DuplexConnection> connect(int mtu) {
     return client.connect().map(AeronDuplexConnection::new);
   }
 }

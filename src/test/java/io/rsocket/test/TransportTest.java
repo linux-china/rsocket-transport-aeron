@@ -262,7 +262,7 @@ public interface TransportTest {
 
       server =
           RSocketFactory.receive()
-              .acceptor((setup, sendingSocket) -> Mono.just(new TestRSocket()))
+              .acceptor((setup, sendingSocket) -> Mono.just(new TestRSocket("data","metadata")))
               .transport(serverTransportSupplier.apply(address))
               .start()
               .block(TIMEOUT);

@@ -3,12 +3,12 @@ package io.rsocket.reactor.aeron;
 import io.aeron.driver.ThreadingMode;
 import io.rsocket.AbstractRSocket;
 import io.rsocket.ConnectionSetupPayload;
-import io.rsocket.Frame;
 import io.rsocket.Payload;
 import io.rsocket.RSocket;
 import io.rsocket.RSocketFactory;
 import io.rsocket.SocketAcceptor;
 import io.rsocket.util.ByteBufPayload;
+
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Supplier;
 import org.agrona.concurrent.BackoffIdleStrategy;
@@ -27,7 +27,6 @@ public final class AeronPongServer {
         new AeronResources()
             .useTmpDir()
             .pollFragmentLimit(32)
-            .writeLimit(32)
             .singleWorker()
             .media(
                 ctx ->
@@ -41,7 +40,6 @@ public final class AeronPongServer {
 
     try {
       RSocketFactory.receive()
-          .frameDecoder(Frame::retain)
           .acceptor(new PingHandler())
           .transport(
               new AeronServerTransport(

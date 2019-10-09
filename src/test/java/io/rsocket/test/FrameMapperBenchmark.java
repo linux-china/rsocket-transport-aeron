@@ -2,7 +2,6 @@ package io.rsocket.test;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
-import io.rsocket.Frame;
 import io.rsocket.reactor.aeron.FrameMapper;
 import java.nio.ByteBuffer;
 import java.util.Random;
@@ -37,7 +36,7 @@ public class FrameMapperBenchmark {
   MutableDirectBuffer aeronDst;
   DirectBuffer aeronSrc;
   int offset = 0;
-  Frame nettySrc;
+  ByteBuf nettySrc;
   int length = 1024;
   ByteBuf nettyDst;
   ByteBuffer byteBuffer;
@@ -52,7 +51,7 @@ public class FrameMapperBenchmark {
     Random random = new Random();
     random.nextBytes(bytes);
 
-    nettySrc = Frame.from(ByteBufAllocator.DEFAULT.buffer(length).writeBytes(bytes));
+    nettySrc = ByteBufAllocator.DEFAULT.buffer(length).writeBytes(bytes);
 
     byteBuffer = (ByteBuffer) ByteBuffer.allocateDirect(length).put(bytes).rewind();
 
@@ -86,7 +85,7 @@ public class FrameMapperBenchmark {
    */
   @Benchmark
   public void aeronToNettyBuffer(Blackhole blackhole) {
-    Frame frame = frameMapper.apply(aeronSrc);
+    ByteBuf frame = frameMapper.apply(aeronSrc);
     blackhole.consume(frame);
     frame.release();
   }
