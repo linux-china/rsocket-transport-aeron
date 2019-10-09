@@ -22,7 +22,7 @@
     </scm>
 
     <properties>
-        <scalecube-reactor-aeron.version>0.1.5-SNAPSHOT</scalecube-reactor-aeron.version>
+        <scalecube-reactor-aeron.version>0.1.4</scalecube-reactor-aeron.version>
         <reactor.version>Californium-SR12</reactor.version>
         <rsocket.version>1.0.0-RC5</rsocket.version>
         <slf4j.version>1.7.25</slf4j.version>
@@ -65,50 +65,48 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-core</artifactId>
+        </dependency>
+        <dependency>
             <groupId>io.scalecube</groupId>
             <artifactId>reactor-aeron</artifactId>
             <version>${scalecube-reactor-aeron.version}</version>
         </dependency>
-
         <dependency>
             <groupId>io.rsocket</groupId>
             <artifactId>rsocket-core</artifactId>
             <version>${rsocket.version}</version>
         </dependency>
-
-        <!-- Logging -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
+        <!-- Logging for testing -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-slf4j-impl</artifactId>
             <version>${log4j.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>${log4j.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.lmax</groupId>
             <artifactId>disruptor</artifactId>
             <version>${disruptor.version}</version>
+            <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>io.rsocket</groupId>
             <artifactId>rsocket-test</artifactId>
             <version>${rsocket.version}</version>
             <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>io.projectreactor</groupId>
-            <artifactId>reactor-core</artifactId>
-        </dependency>
-
         <!-- Test -->
         <dependency>
             <groupId>org.hdrhistogram</groupId>
@@ -116,7 +114,6 @@
             <version>${hdrhistogram.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
@@ -129,7 +126,6 @@
             <version>${jmh.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-test</artifactId>
