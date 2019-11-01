@@ -22,10 +22,10 @@
     </scm>
 
     <properties>
-        <scalecube-reactor-aeron.version>0.1.4</scalecube-reactor-aeron.version>
-        <reactor.version>Californium-SR12</reactor.version>
+        <scalecube-reactor-aeron.version>0.1.5-SNAPSHOT</scalecube-reactor-aeron.version>
+        <reactor.version>Dysprosium-SR1</reactor.version>
         <rsocket.version>1.0.0-RC5</rsocket.version>
-        <slf4j.version>1.7.25</slf4j.version>
+        <slf4j.version>1.7.29</slf4j.version>
         <log4j.version>2.11.0</log4j.version>
         <disruptor.version>3.4.2</disruptor.version>
         <jmh.version>1.21</jmh.version>
